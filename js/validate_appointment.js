@@ -19,9 +19,7 @@ $().ready(function() {
 		 "phone": {
 					required: true,
 				},	
-		 "comments": {
-					required: true,
-				},					
+						
 		},
 		messages: {
 			"name": {
@@ -40,9 +38,7 @@ $().ready(function() {
 			"phone": {
 				required: "<div class='alert alert-danger'>Please enter phone</div>",
 				},
-			"comments": {
-				required: "<div class='alert alert-danger'>Please enter comments</div>",
-				},			
+			
 			
 		}
 	});

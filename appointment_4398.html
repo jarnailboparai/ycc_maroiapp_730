@@ -32,29 +32,27 @@
 
 <script src="js/validate_appointment.js"></script>
 
+<script src="js/jquery.mobile-1.4.0.js"></script>
+
 <!--  Datapicker File Starts here -->
 
   <link rel="stylesheet" href="js/datepicker/jquery.mobile.datepicker.css" />
 
   <script src="js/datepicker/jquery.ui.datepicker.js"></script>
 
-  <script src="js/datepicker/jquery.mobile-git.js"></script> 
-
   <script src="js/datepicker/jquery.mobile.datepicker.js"></script>
 
 <!-- Date Picker ends here -->
 
-<!--  Timepicker File Starts here-->
+<!-- Time Picker files starts here -->
 
-  <script src="js/timepicker/bootstrap-timepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="js/timepicker/timepicker.css" />
 
-  <script src="js/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="js/timepicker/timepicker.js"></script>
 
-  <link rel="stylesheet" href="js/timepicker/bootstrap-timepicker.min.css" />
+<!-- Time picker files ends here  -->
 
-  <link rel="stylesheet" href="js/timepicker/bootstrap-timepicker.min.js" />
 
-<!--  TimePicker ends here-->
 
 <script>
 
@@ -160,8 +158,6 @@ jQuery(document).ready(function(){
 
 	        	var argtt = response.responseText;
 
-				
-
 				var arg = JSON.parse(response.responseText);
 
 				if(arg.success==1)
@@ -252,7 +248,7 @@ img {
 
   </div>
 
-  <div class="manadatory_notification">All Fields are mandatory</div>
+  <!--<div class="manadatory_notification">All Fields are mandatory</div>-->
 
  <form action="http://112.196.20.253:8021/members/wizard/index.php?r=aweber/appointment_form" method="POST" id='module-form-appointment'>
 
@@ -262,9 +258,23 @@ img {
 
   <input type="text" name="email" placeholder="Email" class="email_ico"  value=""/>
 
-  <input type="text" name="appointment_date" placeholder="Appointment Date" class="date-input date_ico" data-inline="false" data-role="date" value=""/>
+  <input type="text" name="appointment_date" placeholder="Appointment Date" class="date-input date_ico" readonly="readonly" data-inline="false" data-role="date" value=""/>
 
-  <input type="text" name="appointment_time" placeholder="Appointment Time" class="time_ico" id="timepicker1" value="" /><i class="icon-time"></i>
+  <input type="hidden" name="time_appointment" value="" />
+
+  <!--<div class="time_wrapper">--><input type="text" name="appointment_time1" placeholder="Appointment Time"  readonly="readonly" class="time_ico" id="timepicker1"   />
+
+  <!-- Time list starts here -->
+
+  <!--<div class="timepickerlist-wrapper" tabindex="-1"><ul class="ui-timepicker-list"><li onclick="liUpdateSelect(this);" >12:00am</li><li>12:30am</li><li class="">1:00am</li><li>1:30am</li><li class="ui-timepicker-selected">2:00am</li><li>2:30am</li><li>3:00am</li><li>3:30am</li><li>4:00am</li><li>4:30am</li><li>5:00am</li><li>5:30am</li><li class="selected_time">6:00am</li><li>6:30am</li><li>7:00am</li><li>7:30am</li><li>8:00am</li><li>8:30am</li><li>9:00am</li><li>9:30am</li><li>10:00am</li><li>10:30am</li><li>11:00am</li><li>11:30am</li><li>12:00pm</li><li>12:30pm</li><li>1:00pm</li><li>1:30pm</li><li>2:00pm</li><li>2:30pm</li><li>3:00pm</li><li>3:30pm</li><li>4:00pm</li><li>4:30pm</li><li>5:00pm</li><li>5:30pm</li><li>6:00pm</li><li>6:30pm</li><li>7:00pm</li><li>7:30pm</li><li>8:00pm</li><li>8:30pm</li><li>9:00pm</li><li>9:30pm</li><li>10:00pm</li><li>10:30pm</li><li>11:00pm</li><li>11:30pm</li></ul></div>-->
+
+  
+
+  <!-- Time list ends here -->
+
+  
+
+ <!-- </div>-->
 
   <input type="text" name="phone" placeholder="Phone" class="phone_ico"  value=""/>
 
@@ -276,10 +286,6 @@ img {
 
   </div>
 
-  <div class="appointment_wrap"></div>
-
-  
-
   <!-- Appointment page ends here -->
 
   
@@ -288,7 +294,7 @@ img {
 
   <!-- thank you message -->
 
-  <div class="thankyou_msg">Thanks. Check your inbox for our email. We will be sending you the information now. If you don't see it then be sure to check your spam folder.</div>
+  <div class="thankyou_msg">Thank you!!!</div>
 
   
 
@@ -301,6 +307,50 @@ img {
 <script type="text/javascript">
 
             $('#timepicker1').timepicker();
+
+			/*$('#timepicker1').timepicker().on('changeTime', function() {
+
+				 $('#timepicker1').val($(this).val());
+
+			   });*/
+
+
+
+			$('#timepicker1').timepicker().on('hide.timepicker', function(e) {
+
+				    $('input[name="time_appointment"]').val(e.time.value);
+
+				   //document.getElementById('timepicker1').value = e.time.value ;
+
+                   console.log('The time is ' + e.time.value);
+
+    
+
+  });
+
+  
+
+   /* function liUpdateSelect(arg)
+
+	{
+
+		 $('#timepicker1').attr('value', $(arg).find('#appicon1').attr('src'));
+
+	}*/
+
+</script>
+
+<script>
+
+/*$(document).ready(function(){
+
+  $("#timepicker1").focus(function(){
+
+    $(".timepickerlist-wrapper").slideDown("slow");
+
+  });
+
+});*/
 
 </script>
 
