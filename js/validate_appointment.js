@@ -18,6 +18,7 @@ $().ready(function() {
 				},	
 		 "phone": {
 					required: true,
+					digits:true,
 				},	
 						
 		},
@@ -27,7 +28,7 @@ $().ready(function() {
 				},
 			"email": {
 				required: "<div class='alert alert-danger'>Please enter Email</div>",
-				email: "<div class='alert alert-danger'>Please enter valid email</div>"
+				email: "<div class='alert alert-danger'>Please enter valid email</div>",
 			},
 			"appointment_date": {
 				required: "<div class='alert alert-danger'>Please enter date</div>",
@@ -37,6 +38,7 @@ $().ready(function() {
 				},
 			"phone": {
 				required: "<div class='alert alert-danger'>Please enter phone</div>",
+				digits: "<div class='alert alert-danger'>Please enter only number</div>",
 				},
 			
 			
